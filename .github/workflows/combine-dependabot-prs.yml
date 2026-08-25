@@ -1,12 +1,9 @@
 name: Combine Dependabot PRs
 
 on:
-  pull_request_target:
-    types:
-      - opened
-      - reopened
-      - synchronize
-      - closed
+  schedule:
+    # Daily at 13:00 UTC (9:00 AM EDT / 8:00 AM EST)
+    - cron: "0 13 * * *"
 
   workflow_dispatch:
 
@@ -16,7 +13,4 @@ permissions:
 
 jobs:
   combine-dependabot-prs:
-    if: >
-      github.event_name == 'workflow_dispatch' ||
-      github.event.pull_request.user.login == 'dependabot[bot]'
     uses: cloudgxp/reusable-workflows/.github/workflows/combine-dependabot-prs.yml@main
