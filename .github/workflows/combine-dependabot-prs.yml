@@ -1,12 +1,8 @@
 name: Combine Dependabot PRs
 
 on:
-  pull_request_target:
-    types:
-      - opened
-      - reopened
-      - synchronize
-      - closed
+  schedule:
+    - cron: "0 0 * * 0"
 
   workflow_dispatch:
 
